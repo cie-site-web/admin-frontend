@@ -1,0 +1,26 @@
+# ================================
+# Development stage avec hot reload
+# ================================
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copier les fichiers de dépendances
+COPY package*.json ./
+
+# Installer toutes les dépendances (incluant devDependencies)
+RUN npm install
+
+# Copier le code source
+COPY . .
+
+# Exposer le port
+EXPOSE 3000
+
+# Variables d'environnement pour le développement
+ENV NODE_ENV=development
+ENV CHOKIDAR_USEPOLLING=true
+ENV WATCHPACK_POLLING=true
+
+# Commande avec hot reload
+CMD ["npm", "run", "dev"]
