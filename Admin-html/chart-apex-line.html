@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta content="Admin & Dashboards Template" name="description" />
+<meta content="Pixeleyez" name="author" />
+
+<!-- layout setup -->
+<script type="module" src="assets/js/layout-setup.js"></script>
+
+<!-- App favicon -->
+<link rel="shortcut icon" href="assets/images/favicon.png">
+
+<!-- Simplebar Css -->
+<link rel="stylesheet" href="assets/libs/simplebar/simplebar.min.css">
+<!-- Swiper Css -->
+<link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet">
+<!-- Nouislider Css -->
+<link href="assets/libs/nouislider/nouislider.min.css" rel="stylesheet">
+<!-- Bootstrap Css -->
+<link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+<!--icons css-->
+<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+<!-- App Css-->
+<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+<title>Apex Line | Urbix Admin & Dashboards Template</title>
+
+</head>
+<body>
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    <div data-include="partials/header.html"></div>
+    <div data-include="partials/sidebar.html"></div>
+    <div data-include="partials/horizontal.html"></div>
+
+    <main class="app-wrapper">
+        <div class="container-fluid">
+
+            <div class="main-breadcrumb d-flex align-items-center my-3 position-relative">
+                <h2 class="breadcrumb-title mb-0 flex-grow-1 fs-14">Apex Line</h2>
+                <div class="flex-shrink-0">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-end mb-0">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Base UI</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Apex Line</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+<div class="row">
+        <div class="col-12 col-xl-6">
+          <div class="card card-h-100 d-flex flex-column justify-content-between overflow-hidden">
+            <!--start::card-->
+            <div class="card-body">
+
+              <div id="basic_line_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <div class="card card-h-100 d-flex flex-column justify-content-between overflow-hidden">
+            <!--start::card-->
+            <div class="card-body">
+
+              <div id="line_with_data_label" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <div class="card card-h-100 d-flex flex-column justify-content-between overflow-hidden">
+            <!--start::card-->
+            <div class="card-body">
+
+              <div id="step_line_line_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <div class="card card-h-100 d-flex flex-column justify-content-between overflow-hidden">
+            <!--start::card-->
+            <div class="card-body">
+
+              <div id="dashedChart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="apex-line-chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="spline_area_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div class="toolbar">
+                <button class="btn btn-sm btn-outline-secondary" id="one_month">
+                  1M
+                </button>
+
+                <button class="btn btn-sm btn-outline-secondary" id="six_months">
+                  6M
+                </button>
+
+                <button class="btn btn-sm btn-outline-secondary" id="one_year">
+                  1Y
+                </button>
+
+                <button class="btn btn-sm btn-outline-secondary" id="ytd">
+                  YTD
+                </button>
+
+                <button class="btn btn-sm btn-outline-secondary" id="all">
+                  ALL
+                </button>
+              </div>
+
+              <div id="datetime_xaxis_area_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="basic_column_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="column_with_label" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="dumbbell_column_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="basic_bar_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="negative_bar_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="line_column_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="funnel_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="candlestick_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-body">
+
+              <div id="Box_Whisker_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-4">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Basic Pie Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <div id="basic_pie_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-4">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Donut Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <div id="donut_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-4">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Basic Radar Chart</h6>
+            </div>
+            <div class="card-body px-0">
+
+              <div id="radar_charts" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-4">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Radar Multiple Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <div id="radar_multiple_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-4">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Radialbar Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <div id="radialbar_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-4">
+          <!--start::card-->
+          <div class="card card-h-100">
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Multiple Radialbar Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <div id="multiple_radialbars_chart" class="apexcharts-container"></div>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+      </div><!--End row-->
+    </div><!--End container-fluid-->
+  </main><!--End app-wrapper-->
+
+            <div data-include="partials/switcher.html"></div>
+            <div data-include="partials/scroll-to-top.html"></div>
+            <div data-include="partials/footer.html"></div>
+        </div>
+    </main>
+</div>
+
+<!-- Load reusable components BEFORE vendor scripts (synchronous XHR) -->
+<script src="js/components-loader.js"></script>
+
+<!-- JAVASCRIPT -->
+<script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/js/scroll-top.init.js"></script>
+
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+<script src="assets/js/chart/apexcharts-line.init.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>

@@ -1,83 +1,47 @@
-'use client';
+/* eslint-disable @next/next/no-css-tags -- feuilles de style du thème Urbix servies depuis /public/assets */
+import type { Metadata } from "next";
+import Script from "next/script";
+import type { ReactNode } from "react";
 
-import { useEffect } from 'react';
+export const metadata: Metadata = {
+  title: "Index | Urbix Admin & Dashboards Template",
+  description: "Admin & Dashboards Template",
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    // Load stylesheets
-    const links = [
-      '/assets/libs/simplebar/simplebar.min.css',
-      '/assets/libs/swiper/swiper-bundle.min.css',
-      '/assets/libs/nouislider/nouislider.min.css',
-      '/assets/css/bootstrap.min.css',
-      '/assets/css/icons.min.css',
-      '/assets/css/app.min.css',
-    ];
-    links.forEach(href => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = href;
-      document.head.appendChild(link);
-    });
-
-    // Load scripts
-    const scripts = [
-      '/assets/libs/swiper/swiper-bundle.min.js',
-      '/assets/libs/bootstrap/js/bootstrap.bundle.min.js',
-      '/assets/libs/simplebar/simplebar.min.js',
-      '/assets/js/scroll-top.init.js',
-      '/assets/js/app.js',
-    ];
-    scripts.forEach(src => {
-      const script = document.createElement('script');
-      script.src = src;
-      document.body.appendChild(script);
-    });
-
-    // Load partials
-    const partials = ['header.html', 'sidebar.html', 'horizontal.html', 'switcher.html', 'scroll-to-top.html', 'footer.html'];
-    partials.forEach(file => {
-      const div = document.querySelector(`[data-include="/partials/${file}"]`);
-      if (div) {
-        fetch(`/partials/${file}`)
-          .then(res => res.text())
-          .then(html => {
-            div.innerHTML = html;
-            div.querySelectorAll('script').forEach(script => {
-              const newScript = document.createElement('script');
-              newScript.textContent = script.textContent;
-              document.body.appendChild(newScript);
-            });
-          })
-          .catch(err => console.log('Error loading partial:', file, err));
-      }
-    });
-  }, []);
-
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      data-layout="vertical"
+      data-bs-theme="light"
+      data-content-width="default"
+      dir="ltr"
+      data-sidebar-color="light"
+      data-sidebar="default"
+      data-theme-colors="default"
+      suppressHydrationWarning
+    >
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <meta content="Admin & Dashboards Template" name="description" />
-        <meta content="Pixeleyez" name="author" />
         <link rel="shortcut icon" href="/assets/images/favicon.png" />
-        <title>Blank | Urbix Admin & Dashboards Template</title>
+        <link rel="stylesheet" href="/assets/libs/simplebar/simplebar.min.css" />
+        <link rel="stylesheet" href="/assets/libs/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="/assets/libs/nouislider/nouislider.min.css" />
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css" id="bootstrap-style" />
+        <link rel="stylesheet" href="/assets/css/icons.min.css" />
+        <link rel="stylesheet" href="/assets/css/app.min.css" id="app-style" />
+        <link rel="stylesheet" href="/assets/libs/gridjs/theme/mermaid.min.css" />
+        <Script src="/assets/js/layout-setup.js" type="module" strategy="beforeInteractive" />
       </head>
-      <body>
-        <div id="layout-wrapper">
-          <div data-include="/partials/header.html"></div>
-          <div data-include="/partials/sidebar.html"></div>
-          <div data-include="/partials/horizontal.html"></div>
-          <main className="app-wrapper">
-            <div className="container-fluid">
-              {children}
-            </div>
-          </main>
-          <div data-include="/partials/switcher.html"></div>
-          <div data-include="/partials/scroll-to-top.html"></div>
-          <div data-include="/partials/footer.html"></div>
-        </div>
+      <body suppressHydrationWarning>
+        {children}
+        <Script src="/assets/libs/swiper/swiper-bundle.min.js" strategy="afterInteractive" />
+        <Script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
+        <Script src="/assets/libs/simplebar/simplebar.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/scroll-top.init.js" strategy="afterInteractive" />
+        <Script src="/assets/libs/gridjs/gridjs.umd.js" strategy="afterInteractive" />
+        <Script src="/assets/libs/apexcharts/apexcharts.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/dashboard/e-commerce.init.js" strategy="afterInteractive" />
+        <Script src="/assets/js/app.js" type="module" strategy="afterInteractive" />
       </body>
     </html>
   );

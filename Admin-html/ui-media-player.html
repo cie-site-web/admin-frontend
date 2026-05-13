@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta content="Admin & Dashboards Template" name="description" />
+<meta content="Pixeleyez" name="author" />
+
+<!-- layout setup -->
+<script type="module" src="assets/js/layout-setup.js"></script>
+
+<!-- App favicon -->
+<link rel="shortcut icon" href="assets/images/favicon.png">
+
+<!-- Simplebar Css -->
+<link rel="stylesheet" href="assets/libs/simplebar/simplebar.min.css">
+<!-- Swiper Css -->
+<link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet">
+<!-- Nouislider Css -->
+<link href="assets/libs/nouislider/nouislider.min.css" rel="stylesheet">
+<!-- Bootstrap Css -->
+<link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+<!--icons css-->
+<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+<!-- App Css-->
+<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+<title>Advanced UI Media Player | Urbix Admin & Dashboards Template</title>
+<link rel="stylesheet" href="assets/libs/plyr/plyr.css">
+</head>
+<body>
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    <div data-include="partials/header.html"></div>
+    <div data-include="partials/sidebar.html"></div>
+    <div data-include="partials/horizontal.html"></div>
+
+    <main class="app-wrapper">
+        <div class="container-fluid">
+
+            <div class="main-breadcrumb d-flex align-items-center my-3 position-relative">
+                <h2 class="breadcrumb-title mb-0 flex-grow-1 fs-14">Media Player</h2>
+                <div class="flex-shrink-0">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-end mb-0">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Advanced UI</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Advanced UI Media Player</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+<div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">YouTube Video Player</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted mb-2">Enter a YouTube URL below to watch the video.</p>
+                            <p class="text-muted mb-4">Embed a YouTube video with custom controls using <code>Plyr.io</code>. Simply include a YouTube <code>&lt;iframe&gt;</code> and initialize <code>Plyr</code> for a sleek, customizable video player experience.</p>
+                            <div class="input-group mb-5">
+                                <input type="text" class="form-control" id="url-input" placeholder="Enter YouTube URL" aria-label="Username" aria-describedby="basic-addon1">
+                                <span class="input-group-text btn btn-primary" id="load-video">Load Video</span>
+                            </div>
+                            <div id="video_player" class="plyr__video-embed">
+                                <iframe id="video-frame" src="https://www.youtube.com/watch?v=2RZQN_ko0iU&ab_channel=DreamWorksMadagascar" allowfullscreen allowtransparency allow="autoplay"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--End col-->
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Audio</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted mb-4">Create a custom audio player using <code>Plyr.io</code>. Wrap your <code>&lt;audio&gt;</code> element and initialize <code>Plyr</code> to provide a modern, feature-rich audio playback experience.</p>
+                            <div class="plyr__audio-embed" id="plyr__audio">
+                                <audio controls playsinline crossorigin>
+                                    <source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--End col-->
+
+            </div><!--End row-->
+        </div><!--End container-fluid-->
+    </main><!--End app-wrapper-->
+
+            <div data-include="partials/switcher.html"></div>
+            <div data-include="partials/scroll-to-top.html"></div>
+            <div data-include="partials/footer.html"></div>
+        </div>
+    </main>
+</div>
+
+<!-- Load reusable components BEFORE vendor scripts (synchronous XHR) -->
+<script src="js/components-loader.js"></script>
+
+<!-- JAVASCRIPT -->
+<script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/js/scroll-top.init.js"></script>
+
+<script src="assets/libs/plyr/plyr.min.js"></script>
+<script type="module" src="assets/js/ui/player.init.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>

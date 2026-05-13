@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta content="Admin & Dashboards Template" name="description" />
+<meta content="Pixeleyez" name="author" />
+
+<!-- layout setup -->
+<script type="module" src="assets/js/layout-setup.js"></script>
+
+<!-- App favicon -->
+<link rel="shortcut icon" href="assets/images/favicon.png">
+
+<!-- Simplebar Css -->
+<link rel="stylesheet" href="assets/libs/simplebar/simplebar.min.css">
+<!-- Swiper Css -->
+<link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet">
+<!-- Nouislider Css -->
+<link href="assets/libs/nouislider/nouislider.min.css" rel="stylesheet">
+<!-- Bootstrap Css -->
+<link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css">
+<!--icons css-->
+<link href="assets/css/icons.min.css" rel="stylesheet" type="text/css">
+<!-- App Css-->
+<link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css">
+<title>ChartJs | Urbix Admin & Dashboards Template</title>
+
+</head>
+<body>
+
+<!-- Begin page -->
+<div id="layout-wrapper">
+
+    <div data-include="partials/header.html"></div>
+    <div data-include="partials/sidebar.html"></div>
+    <div data-include="partials/horizontal.html"></div>
+
+    <main class="app-wrapper">
+        <div class="container-fluid">
+
+            <div class="main-breadcrumb d-flex align-items-center my-3 position-relative">
+                <h2 class="breadcrumb-title mb-0 flex-grow-1 fs-14">ChartJs</h2>
+                <div class="flex-shrink-0">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-end mb-0">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Base UI</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">ChartJs</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+<div class="row">
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Basic line Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <canvas class="chartjs" id="eCommerceChart"></canvas>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Bar Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <canvas class="chartjs" id="barChart"></canvas>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">horizontal Bar Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <canvas class="chartjs" id="horizontalBarChart"></canvas>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Polar Area Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <canvas class="chartjs" id="polarChart"></canvas>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Pie Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <canvas class="chartjs" id="myPieChart"></canvas>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Stacked Bar & Line Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <canvas class="chartjs" id="stackedLineChart"></canvas>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Radar Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <canvas class="chartjs" id="radarChart"></canvas>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Line Area Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <canvas class="chartjs" id="lineAreaChart"></canvas>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+        <div class="col-12 col-xl-6">
+          <!--start::card-->
+          <div class="card card-h-100">
+
+            <div class="card-header">
+              <h6 class="card-title mb-0 fw-semibold">Doughnut Chart</h6>
+            </div>
+            <div class="card-body">
+
+              <canvas class="chartjs" id="doughnutChart"></canvas>
+
+            </div>
+            <!-- end card-body -->
+          </div>
+          <!--end::card-->
+        </div>
+
+      </div><!--End row-->
+    </div><!--End container-fluid-->
+  </main><!--End app-wrapper-->
+
+            <div data-include="partials/switcher.html"></div>
+            <div data-include="partials/scroll-to-top.html"></div>
+            <div data-include="partials/footer.html"></div>
+        </div>
+    </main>
+</div>
+
+<!-- Load reusable components BEFORE vendor scripts (synchronous XHR) -->
+<script src="js/components-loader.js"></script>
+
+<!-- JAVASCRIPT -->
+<script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/js/scroll-top.init.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="assets/js/chart/chartjs.init.js"></script>
+<script src="assets/js/app.js"></script>
+
+</body>
+</html>
