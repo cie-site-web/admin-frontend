@@ -3,9 +3,16 @@
 // Get HTML root element
 const htmlElement = document.documentElement;
 
+// One-time migration: ancien défaut vertical en localStorage bloquait le passage en horizontal
+const LAYOUT_DEFAULT_MIGRATION_KEY = "urbix-next-layout-default-horizontal-v1";
+if (!localStorage.getItem(LAYOUT_DEFAULT_MIGRATION_KEY)) {
+  localStorage.removeItem("data-layout");
+  localStorage.setItem(LAYOUT_DEFAULT_MIGRATION_KEY, "1");
+}
+
 // List of all settings to check
 const settings = [
-  { attribute: "data-layout", defaultValue: "vertical" },
+  { attribute: "data-layout", defaultValue: "horizontal" },
   { attribute: "data-bs-theme", defaultValue: "light" },
   { attribute: "data-content-width", defaultValue: "default" },
   { attribute: "dir", defaultValue: "ltr" },
@@ -14,27 +21,15 @@ const settings = [
   { attribute: "data-theme-colors", defaultValue: "default" },
 ];
 
-// Apply each setting from localStorage or use default
+// Apply each setting from localStorage or use default (attributs <html> + thème + RTL)
 settings.forEach((setting) => {
   const savedValue = localStorage.getItem(setting.attribute);
   const valueToApply = savedValue || setting.defaultValue;
 
-  // Apply to HTML element
   htmlElement.setAttribute(setting.attribute, valueToApply);
   if (setting.attribute === "dir") updateLayoutDir(valueToApply);
   else if (setting.attribute === "data-bs-theme") setTheme(valueToApply);
-
-  const radioSelector = `input[name="${setting.attribute}"][value="${valueToApply}"]`;
-  const radioElement = document.querySelector(radioSelector);
-  if (radioElement) {
-    radioElement.checked = true;
-  }
 });
-
-updateSimpleBar(
-  htmlElement.getAttribute("data-sidebar") ??
-    htmlElement.getAttribute("data-layout")
-);
 
 if (document.documentElement.getAttribute("data-layout") === "horizontal") {
   removeHorizontalAttributes();
@@ -134,16 +129,14 @@ function updateSimpleBar(value) {
     }
   } else {
     setTimeout(() => {
-      if (window.SimpleBar) {
-        const simpleBarInstance = SimpleBar.instances.get(sidebarSimpleBarMenu);
-        if (simpleBarInstance) {
-          simpleBarInstance.unMount(); // Unmount and remove the instance
-          const allMenus =
-            sidebarSimpleBarMenu.querySelector("ul.pe-main-menu");
-          if (allMenus) {
-            sidebarSimpleBarMenu.innerHTML = allMenus.parentElement.innerHTML;
-            updateSidebarClick();
-          }
+      if (!sidebarSimpleBarMenu || !window.SimpleBar) return;
+      const simpleBarInstance = SimpleBar.instances.get(sidebarSimpleBarMenu);
+      if (simpleBarInstance) {
+        simpleBarInstance.unMount(); // Unmount and remove the instance
+        const allMenus = sidebarSimpleBarMenu.querySelector("ul.pe-main-menu");
+        if (allMenus) {
+          sidebarSimpleBarMenu.innerHTML = allMenus.parentElement.innerHTML;
+          updateSidebarClick();
         }
       }
     }, 0);
@@ -166,6 +159,8 @@ function handleRadioChange(event) {
         setAndSaveAttribute("data-topbar-theme", "dark");
       } else {
         document.documentElement.removeAttribute("data-topbar-theme");
+        const sb = localStorage.getItem("data-sidebar") || "default";
+        htmlElement.setAttribute("data-sidebar", sb);
       }
       updateSimpleBar(value);
       break;
@@ -192,12 +187,32 @@ function handleRadioChange(event) {
   }
 }
 
-// Attach event listeners to all radio buttons in the customizer
-document
-  .querySelectorAll('.layout-customizer input[type="radio"]')
-  .forEach((radio) => {
-    radio.addEventListener("change", handleRadioChange);
+function syncCustomizerRadiosFromDocument() {
+  settings.forEach((setting) => {
+    const savedValue = localStorage.getItem(setting.attribute);
+    const valueToApply = savedValue || setting.defaultValue;
+    const radioSelector = `input[name="${setting.attribute}"][value="${valueToApply}"]`;
+    const radioElement = document.querySelector(radioSelector);
+    if (radioElement) {
+      radioElement.checked = true;
+    }
   });
+}
+
+function bindLayoutDomAndListeners() {
+  syncCustomizerRadiosFromDocument();
+
+  updateSimpleBar(
+    htmlElement.getAttribute("data-sidebar") ??
+      htmlElement.getAttribute("data-layout")
+  );
+
+  // Attach event listeners to all radio buttons in the customizer
+  document
+    .querySelectorAll('.layout-customizer input[type="radio"]')
+    .forEach((radio) => {
+      radio.addEventListener("change", handleRadioChange);
+    });
 
 // dark light mode toggle
 const toggleMode = document.getElementById("toggleMode");
@@ -208,6 +223,7 @@ toggleMode?.addEventListener("click", () => {
   const newTheme = currentTheme === "light" ? "dark" : "light";
   setAndSaveAttribute("data-bs-theme", newTheme);
   setTheme(newTheme);
+  if (!lightModeButton || !darkModeButton) return;
   if (newTheme === "dark") {
     lightModeButton.classList.remove("active");
     darkModeButton.classList.add("active");
@@ -223,10 +239,10 @@ const sideBarBackdrop = document.getElementById("sidebar-backdrop");
 sideBarBackdrop?.addEventListener("click", () => {
   if (htmlElement.getAttribute("data-layout") === "horizontal") {
     const horizontalAside = document.getElementById("horizontal-aside");
-    horizontalAside.classList.toggle("show");
+    horizontalAside?.classList.toggle("show");
   } else {
     const sidebar = document.getElementById("sidebar");
-    sidebar.classList.remove("show");
+    sidebar?.classList.remove("show");
   }
 });
 
@@ -242,9 +258,8 @@ function removeShowClassFromSidebar() {
 toggleButton?.addEventListener("click", () => {
   const currentToggled = htmlElement.getAttribute("data-sidebar");
   if (window.innerWidth < 1024) {
-    // Toggle the data-vertical-layout value
     const sidebar = document.getElementById("sidebar");
-    sidebar.classList.add("show");
+    sidebar?.classList.add("show");
     if (document.documentElement.getAttribute("data-layout") === "horizontal")
       removeHorizontalAttributes();
   } else {
@@ -263,9 +278,8 @@ toggleButton?.addEventListener("click", () => {
 const horizontalToggle = document.getElementById("toggleHorizontal");
 horizontalToggle?.addEventListener("click", () => {
   if (window.innerWidth < 1200) {
-    // Toggle the data-vertical-layout value
     const horizontalAside = document.getElementById("horizontal-aside");
-    horizontalAside.classList.toggle("show");
+    horizontalAside?.classList.toggle("show");
   }
 });
 
@@ -356,7 +370,10 @@ const sidebarDefaultArrow = document.getElementById("sidebarDefaultArrow");
 
 sidebarDefaultArrow?.addEventListener("click", () => {
   setAndSaveAttribute("data-sidebar", "default");
-  document.querySelector('input[name="data-sidebar"]').checked = true;
+  const defaultSidebarRadio = document.querySelector(
+    'input[name="data-sidebar"][value="default"]'
+  );
+  if (defaultSidebarRadio) defaultSidebarRadio.checked = true;
 });
 
 // Run on page load
@@ -370,3 +387,15 @@ function handleResponsiveSidebar() {
 
 // Run on window resize
 window.addEventListener("resize", handleResponsiveSidebar);
+
+} // end bindLayoutDomAndListeners
+
+function runWhenDomReady() {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindLayoutDomAndListeners);
+  } else {
+    bindLayoutDomAndListeners();
+  }
+}
+
+runWhenDomReady();

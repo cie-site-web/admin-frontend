@@ -12,12 +12,12 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html
       lang="en"
-      data-layout="vertical"
+      data-layout="horizontal"
+      data-topbar-theme="dark"
       data-bs-theme="light"
       data-content-width="default"
       dir="ltr"
       data-sidebar-color="light"
-      data-sidebar="default"
       data-theme-colors="default"
       suppressHydrationWarning
     >
@@ -30,13 +30,13 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <link rel="stylesheet" href="/assets/css/icons.min.css" />
         <link rel="stylesheet" href="/assets/css/app.min.css" id="app-style" />
         <link rel="stylesheet" href="/assets/libs/gridjs/theme/mermaid.min.css" />
-        <Script src="/assets/js/layout-setup.js" type="module" strategy="beforeInteractive" />
       </head>
       <body suppressHydrationWarning>
         {children}
         <Script src="/assets/libs/swiper/swiper-bundle.min.js" strategy="afterInteractive" />
         <Script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
         <Script src="/assets/libs/simplebar/simplebar.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/layout-setup.js" strategy="afterInteractive" />
         <Script src="/assets/js/scroll-top.init.js" strategy="afterInteractive" />
         <Script src="/assets/libs/gridjs/gridjs.umd.js" strategy="afterInteractive" />
         <Script src="/assets/libs/apexcharts/apexcharts.min.js" strategy="afterInteractive" />
