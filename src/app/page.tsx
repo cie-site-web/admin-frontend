@@ -57,5 +57,12 @@ function buildUrbixDashboardHtml(): string {
 
 export default function HomePage() {
   const html = buildUrbixDashboardHtml();
-  return <div suppressHydrationWarning dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <div
+      id="urbix-root"
+      style={{ display: "block", width: "100%", maxWidth: "none", boxSizing: "border-box" }}
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
 }

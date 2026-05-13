@@ -1,0 +1,24 @@
+/**
+ * Correctifs largeur : Next enveloppe #layout-wrapper dans un div React.
+ * Renforce le fluide (équivalent Live Server / HTML pur).
+ */
+#urbix-root {
+  display: block;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+}
+
+#urbix-root #layout-wrapper {
+  width: 100%;
+  max-width: none;
+}
+
+/* En horizontal, margin-inline-start: auto sur .app-wrapper peut resserrer la colonne selon le moteur */
+[data-layout="horizontal"] #urbix-root main.app-wrapper {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}

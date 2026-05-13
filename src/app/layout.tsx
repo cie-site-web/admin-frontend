@@ -29,6 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" id="bootstrap-style" />
         <link rel="stylesheet" href="/assets/css/icons.min.css" />
         <link rel="stylesheet" href="/assets/css/app.min.css" id="app-style" />
+        <link rel="stylesheet" href="/assets/css/urbix-next-bridge.css" />
         <link rel="stylesheet" href="/assets/libs/gridjs/theme/mermaid.min.css" />
       </head>
       <body suppressHydrationWarning>

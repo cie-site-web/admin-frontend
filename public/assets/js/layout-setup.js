@@ -10,6 +10,15 @@ if (!localStorage.getItem(LAYOUT_DEFAULT_MIGRATION_KEY)) {
   localStorage.setItem(LAYOUT_DEFAULT_MIGRATION_KEY, "1");
 }
 
+// One-time: mode "box" (largeur réduite) souvent présent seulement sur localhost — aligner sur le HTML fluide
+const CONTENT_WIDTH_FLUID_MIGRATION = "urbix-next-content-width-fluid-v1";
+if (!localStorage.getItem(CONTENT_WIDTH_FLUID_MIGRATION)) {
+  if (localStorage.getItem("data-content-width") === "box") {
+    localStorage.removeItem("data-content-width");
+  }
+  localStorage.setItem(CONTENT_WIDTH_FLUID_MIGRATION, "1");
+}
+
 // List of all settings to check
 const settings = [
   { attribute: "data-layout", defaultValue: "horizontal" },
