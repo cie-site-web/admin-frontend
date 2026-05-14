@@ -16,17 +16,8 @@ if (scrollToTop) {
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-        const yearSpan = document.querySelector(".footer-year");
-        if (yearSpan) {
-            yearSpan.textContent = String(new Date().getFullYear());
-        }
-
         const progressWrap = document.querySelector('.progress-wrap');
         const progressCircle = document.querySelector('.progress');
-        if (!progressWrap || !progressCircle) {
-            return;
-        }
-
         const pathLength = 282.6; // Circumference of the circle (2 * π * radius) = 2 * π * 45
 
         progressCircle.style.strokeDasharray = `${pathLength} ${pathLength}`;
