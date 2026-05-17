@@ -1,22 +1,24 @@
-import type { ReactNode } from "react";
+import { Sidebar, HorizontalNav } from "@/components/sections/admin/navbar";
+import { Header, NOTIFICATIONS, CART_ITEMS, CURRENT_USER } from "@/components/sections/admin/header";
+import Footer from "@/components/sections/admin/Footer";
+import ScrollToTop from "@/components/ui/scroll_to_top/ScrollToTop";
 
-/**
- * Layout du groupe (admin).
- * Le RootLayout (src/app/layout.tsx) fournit déjà html/body, les CSS et les
- * scripts du thème Urbix. Le wrapper #layout-wrapper et la <main class="app-wrapper">
- * structurent le contenu pour que le thème s'affiche correctement.
- *
- * Le header, sidebar et footer sont chargés par le thème Urbix lui-même
- * (via /assets/js/components-loader.js qui injecte les partials).
- * À terme, on remplacera ces partials par les composants React
- * src/components/sections/admin/Header.tsx, Navbar.tsx, Footer.tsx.
- */
-export default function AdminLayout({ children }: { children: ReactNode }) {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <div id="layout-wrapper">
+      <Header
+        user={CURRENT_USER}
+        notifications={NOTIFICATIONS}
+        unreadCount={4}
+        cartItems={CART_ITEMS}
+      />
+      <Sidebar />
+      <HorizontalNav />
       <main className="app-wrapper">
         <div className="container-fluid">{children}</div>
       </main>
+      <Footer />
+      <ScrollToTop />
     </div>
   );
 }

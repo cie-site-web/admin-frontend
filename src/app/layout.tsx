@@ -2,6 +2,11 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import type { ReactNode } from "react";
+import { Sidebar, HorizontalNav } from "@/components/sections/admin/navbar";
+import { Header, NOTIFICATIONS, CART_ITEMS, CURRENT_USER } from "@/components/sections/admin/header";
+import Footer from "@/components/sections/admin/Footer";
+import ScrollToTop from "@/components/ui/scroll_to_top/ScrollToTop";
+
 
 export const metadata: Metadata = {
   title: "Index | Urbix Admin & Dashboards Template",
@@ -32,8 +37,30 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
         <link rel="stylesheet" href="/assets/css/urbix-next-bridge.css" />
         <link rel="stylesheet" href="/assets/libs/gridjs/theme/mermaid.min.css" />
       </head>
+
       <body suppressHydrationWarning>
-        {children}
+      <div id="layout-wrapper">
+
+        <Header
+          user={CURRENT_USER}
+          notifications={NOTIFICATIONS}
+          unreadCount={4}
+          cartItems={CART_ITEMS}
+        />
+
+        <Sidebar />
+
+        <HorizontalNav />
+
+        <main className="app-wrapper">
+          <div className="container-fluid">{children}</div>
+        </main>
+
+        <Footer />
+        
+        <ScrollToTop />
+      </div>
+
         <Script src="/assets/libs/swiper/swiper-bundle.min.js" strategy="afterInteractive" />
         <Script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
         <Script src="/assets/libs/simplebar/simplebar.min.js" strategy="afterInteractive" />

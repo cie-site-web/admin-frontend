@@ -51,6 +51,12 @@ export interface StatItem {
   icon: string;
   value: string;
   label: string;
+  /** Texte en sourdine sous le label (ex: "Sales Increment Rate") */
   caption?: string;
+  /** Préfixe coloré dans le caption (ex: "+8%") */
+  captionHighlight?: string;
+  /** Couleur du préfixe — défaut: success */
+  highlightColor?: "success" | "danger" | "primary" | "warning";
+  /** Tendance affichée à côté de la valeur — défaut: "up" */
   trend?: "up" | "down" | "none";
 }
