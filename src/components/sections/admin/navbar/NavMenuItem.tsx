@@ -19,20 +19,14 @@ export default function NavMenuItem({ item, level = 0 }: NavMenuItemProps) {
   // Item actif si son href correspond exactement à l'URL courante
   const isActive = item.href === pathname;
 
-  const handleToggle = (e: React.MouseEvent) => {
-    if (hasChildren) {
-      e.preventDefault();
-      setIsOpen((prev) => !prev);
-    }
-  };
+  
 
   return (
-    <li className={`pe-slide ${hasChildren ? "pe-has-sub" : "pe-slide-item"}`}>
+    <li className={`pe-slide pe-has-sub`}>
       {hasChildren ? (
         <a
           href={`#${item.collapseId ?? ""}`}
           className="pe-nav-link"
-          onClick={handleToggle}
           data-bs-toggle="collapse"
           aria-expanded={isOpen}
           aria-controls={item.collapseId}

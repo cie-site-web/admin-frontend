@@ -43,7 +43,6 @@ export default function StatsRow({ stats }: StatsRowProps) {
             <div className="col-4">
               <div className="text-end">
                 <p className="mb-5 fs-16 fw-semibold text-white">
-                  Lorem ipsum dolor <br /> sit lorem ipsum <br /> dolor sit
                 </p>
                 <a
                   href="#"

@@ -3,12 +3,7 @@
  * Quand l'API sera branchée, ces types correspondront aux réponses backend.
  */
 
-export type OrderStatus =
-  | "On Way"
-  | "Waiting"
-  | "Pending"
-  | "Delivered"
-  | "Canceled";
+export type OrderStatus = "Actif" | "Inactif";
 
 export interface Order {
   id: string;

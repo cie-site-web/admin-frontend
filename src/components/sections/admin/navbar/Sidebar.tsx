@@ -16,21 +16,21 @@ export default function Sidebar() {
         <Link href="/" className="d-flex align-items-end logo-main">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            height={35}
-            width={34}
+            height={40}
+            width={40}
             className="logo-dark"
-            alt="Dark Logo"
+            alt="Logo Club Informatique de l'EPO (CIE)"
             src="/assets/images/logo-md.png"
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            height={35}
-            width={34}
+            height={40}
+            width={40}
             className="logo-light"
-            alt="Light Logo"
+            alt="Logo Club Informatique de l'EPO (CIE)"
             src="/assets/images/logo-md-light.png"
           />
-          <h3 className="text-body-emphasis fw-bolder mb-0 ms-1">Urbix</h3>
+          <h3 className="text-body-emphasis fw-bolder mb-0 ms-1">CIE</h3>
         </Link>
         <button
           type="button"

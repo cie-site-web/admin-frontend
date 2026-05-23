@@ -5,7 +5,6 @@ import Link from "next/link";
 import NotificationsDropdown from "./NotificationsDropdown";
 import CartDropdown from "./CartDropdown";
 import ProfileMenu from "./ProfileMenu";
-import SearchModal from "./SearchModal";
 import DarkModeToggle from "./DarkModeToggle";
 import type {
   NotificationItem,
@@ -31,7 +30,7 @@ export default function Header({
       <header className="app-header" id="appHeader">
         <div className="container-fluid w-100">
           <div className="d-flex justify-content-between align-items-center">
-            {/* Bloc gauche : logo + toggles sidebar + barre de recherche */}
+            {/* Bloc gauche : logo + toggles sidebar */}
             <div className="d-inline-flex align-items-center gap-2">
               <Link
                 href="/"
@@ -39,14 +38,14 @@ export default function Header({
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  height={35}
-                  width={34}
+                  height={40}
+                  width={40}
                   className="logo-dark"
-                  alt="Dark Logo"
+                  alt="Logo Club Informatique de l'EPO (CIE)"
                   src="/assets/images/logo-md.png"
                 />
                 <h3 className="text-body-emphasis fw-bolder mb-0 ms-1">
-                  Urbix
+                  CIE
                 </h3>
               </Link>
 
@@ -67,31 +66,6 @@ export default function Header({
               >
                 <i className="ri-menu-2-line header-icon"></i>
               </button>
-
-              {/* Barre de recherche (ouvre #searchModal) */}
-              <div
-                className="form-icon right d-none d-md-block"
-                data-bs-toggle="modal"
-                data-bs-target="#searchModal"
-              >
-                <input
-                  type="text"
-                  className="form-control form-control-icon bg-transparent rounded-pill min-w-300px"
-                  id="Search"
-                  placeholder="Search"
-                  readOnly
-                />
-                <div className="search-btn">
-                  <div>
-                    <i className="ri-search-line text-muted fs-16"></i>
-                  </div>
-                  <div>
-                    <span className="badge bg-light-subtle text-muted">
-                      CTRL D
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Bloc droit : notifications, cart, settings, dark mode, profil */}
@@ -102,17 +76,6 @@ export default function Header({
                   unreadCount={unreadCount}
                 />
                 <CartDropdown items={cartItems} />
-
-                {/* Bouton search mobile */}
-                <button
-                  className="btn header-btn d-block d-md-none"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#searchModal"
-                  aria-label="Open search"
-                >
-                  <i className="ri-search-line"></i>
-                </button>
               </div>
 
               <DarkModeToggle />
@@ -121,8 +84,6 @@ export default function Header({
           </div>
         </div>
       </header>
-
-      <SearchModal />
     </>
   );
 }

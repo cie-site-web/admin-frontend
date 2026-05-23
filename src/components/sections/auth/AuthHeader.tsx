@@ -9,12 +9,13 @@ export default function AuthHeader() {
       <Link href="/" className="d-flex align-items-end logo-main">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          height={35}
+          height={40}
+          width={40}
           className="logo-dark"
-          alt="Dark Logo"
+          alt="Logo Club Informatique de l'EPO (CIE)"
           src="/assets/images/logo-md.png"
         />
-        <h3 className="text-body-emphasis fw-bolder mb-0 ms-1">Urbix</h3>
+        <h3 className="text-body-emphasis fw-bolder mb-0 ms-1">CIE</h3>
       </Link>
       <ul className="list-inline mb-0">
         <li className="list-inline-item pe-4 border-end">

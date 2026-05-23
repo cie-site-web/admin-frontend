@@ -12,12 +12,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         unreadCount={4}
         cartItems={CART_ITEMS}
       />
+
       <Sidebar />
+
       <HorizontalNav />
+
       <main className="app-wrapper">
         <div className="container-fluid">{children}</div>
       </main>
+
       <Footer />
+
       <ScrollToTop />
     </div>
   );

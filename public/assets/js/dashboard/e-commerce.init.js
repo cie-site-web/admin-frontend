@@ -6,6 +6,7 @@ File: E-Commerce init js
 */
 function renderCharts() {
   // Average line
+  if (!document.querySelector("#average-line")) return;
   var options = {
     series: [
       {
@@ -86,8 +87,8 @@ function renderCharts() {
     new gridjs.Grid({
       columns: [
         { name: 'Date', formatter: (cell) => gridjs.html(`<span class="text-muted">${cell}</span>`) },
-        { name: 'Name', formatter: (cell) => gridjs.html(`<span class="text-muted">${cell}</span>`) },
-        { name: 'Amount', formatter: (cell) => gridjs.html(`<span class="text-muted">${cell}</span>`) }
+        { name: 'Type', formatter: (cell) => gridjs.html(`<span class="text-muted">${cell}</span>`) },
+        { name: 'Montant', formatter: (cell) => gridjs.html(`<span class="text-muted">${cell}</span>`) }
       ],
       sort: true,
       data: [

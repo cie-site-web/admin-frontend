@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-css-tags -- feuilles de style du thème Urbix servies depuis /public/assets */
+/* eslint-disable @next/next/no-css-tags -- feuilles de style du thème servies depuis /public/assets */
 import type { Metadata } from "next";
 import Script from "next/script";
 import type { ReactNode } from "react";
@@ -9,8 +9,8 @@ import ScrollToTop from "@/components/ui/scroll_to_top/ScrollToTop";
 
 
 export const metadata: Metadata = {
-  title: "Index | Urbix Admin & Dashboards Template",
-  description: "Admin & Dashboards Template",
+  title: "CIE Admin",
+  description: "Administration du club",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
@@ -39,27 +39,8 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
       </head>
 
       <body suppressHydrationWarning>
-      <div id="layout-wrapper">
-
-        <Header
-          user={CURRENT_USER}
-          notifications={NOTIFICATIONS}
-          unreadCount={4}
-          cartItems={CART_ITEMS}
-        />
-
-        <Sidebar />
-
-        <HorizontalNav />
-
-        <main className="app-wrapper">
-          <div className="container-fluid">{children}</div>
-        </main>
-
-        <Footer />
         
-        <ScrollToTop />
-      </div>
+        <div>{children}</div>
 
         <Script src="/assets/libs/swiper/swiper-bundle.min.js" strategy="afterInteractive" />
         <Script src="/assets/libs/bootstrap/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
